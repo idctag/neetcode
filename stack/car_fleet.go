@@ -1,9 +1,23 @@
 package stack
 
+import "sort"
+
 func CarFleet(target int, position []int, speed []int) int {
-	res := 0
-	slowest := len(position) - 1
-	for i := len(position) - 1; i > 0; i-- {
+	n := len(position)
+	pair := make([][2]int, n)
+	for i := range n {
+		pair[i] = [2]int{position[i], speed[i]}
 	}
-	return res
+	sort.Slice(pair, func(i, j int) bool {
+		return pair[i][0] > pair[j][0]
+	})
+	stack := []float64{}
+	for _, p := range pair {
+		time := float64(target-p[0]) / float64(p[1])
+		stack = append(stack, time)
+		if len(stack) >= 2 && stack[len(stack)-1] <= stack[len(stack)-2] {
+			stack = stack[:len(stack)-1]
+		}
+	}
+	return len(stack)
 }
