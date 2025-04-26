@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-	matrix := [][]int{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}
-	res := binarysearch.SearchMatrix(matrix, 60)
+	res := binarysearch.MinEatingSpeed([]int{30, 11, 23, 4, 20}, 6)
 	fmt.Println(res)
 }
