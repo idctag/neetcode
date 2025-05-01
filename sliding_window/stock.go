@@ -1,17 +1,14 @@
 package slidingwindow
 
 func MaxProfit(prices []int) int {
-	maxProfit, lidx := 0, 0
-
-	for ridx := 1; ridx < len(prices); ridx++ {
-		lprice := prices[lidx]
-		rprice := prices[ridx]
-		if lprice > rprice {
-			lidx = ridx
+	l, res := 0, 0
+	for r := 1; r < len(prices); r++ {
+		if prices[r] < prices[l] {
+			l = r
 			continue
 		} else {
-			maxProfit = max(maxProfit, rprice-lprice)
+			res = max((prices[r] - prices[l]), res)
 		}
 	}
-	return maxProfit
+	return res
 }

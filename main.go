@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 
-	binarysearch "neetcode/binary_search"
+	slidingwindow "neetcode/sliding_window"
 )
 
 func main() {
-	res := binarysearch.MinEatingSpeed([]int{30, 11, 23, 4, 20}, 6)
+	s := "abcabcbb"
+	res := slidingwindow.LongestSubstring(s)
 	fmt.Println(res)
 }
